@@ -4,12 +4,11 @@ namespace Project_Main.Models.DataBases.Repositories
 {
     public interface IRepository<T> where T : class
     {
-        IRepository<T> Repository { get; set; }
         Task Add(T entity);
-        Task<T> GetAsync(int id);
+        Task<T?> GetAsync(object id);
         Task<IEnumerable<T>> GetByFilterAsync(Expression<Func<T, bool>>? filter = null);
-		Task Update(T entity);
-		Task Remove(T entity);
+		void Update(T entity);
+		void Remove(T entity);
         Task<IEnumerable<T>> GetAllAsync();
     }
 }
